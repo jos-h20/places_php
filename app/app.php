@@ -15,11 +15,11 @@
     ));
 
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('places.html.twig', array(/'places' => Place::getAll()));
+        return $app['twig']->render('places.html.twig', array('places' => Place::getAll()));
     });
 
     $app->post("/places", function() use ($app) {
-        $place = new Place($_POST['name']);
+        $place = new Place($_POST['name'], $_POST['year']);
         $place->save();
         return $app['twig']->render('add_place.html.twig', array('newplace' => $place));
     });

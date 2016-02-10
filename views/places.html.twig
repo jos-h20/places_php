@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Places I've Been</title>
+</head>
+<body>
+    <h1>My Travels</h1>
+
+    {% if places is not empty %}
+        <p>Here is Where I've Been:</p>
+        <ul>
+            {% for place in places %}
+                <li><strong>{{ place.getName }}</strong> in {{ place.getYear }}.</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action='/places' method='post'>
+        <label for='name'>Name of Place:</label>
+        <input id='name' name='name' type='text'>
+        <label for='year'>Year of First Visit:</label>
+        <input id='year' name='year' type='text'>
+
+        <button type='submit'>Add Place</button>
+    </form>
+    <form action='/delete_places' method='post'>
+        <button type='submit'>Clear</button>
+    </form>
+</body>
+</html>
